@@ -16,13 +16,13 @@ public class Movement : MonoBehaviour
     {
         if (other.gameObject.tag == "Pink")
         {
-            leftBar.fillAmount += 0.1f;
-            rightBar.fillAmount -= 0.1f;
+            _counter--;
         }
-        else if (other.gameObject.tag == "Blue") { 
-            leftBar.fillAmount -= 0.1f;
-            rightBar.fillAmount += 0.1f;
+        else if (other.gameObject.tag == "Blue") {
+            _counter++;
         }
+        rightBar.fillAmount = _counter * 0.1f;
+        leftBar.fillAmount = -_counter * 0.1f;
     }
     void Update()
     {
@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour
         else if (Input.GetMouseButton(0) && _isMoving)
         {
             _deltaMouseX = _prevMouseX - Input.mousePosition.x;
-            if ((transform.position.x > -7f || _deltaMouseX < 0) && (transform.position.x < 7f || _deltaMouseX > 0))
+            if ((transform.position.x > -4.8f || _deltaMouseX < 0) && (transform.position.x < 4.8f || _deltaMouseX > 0))
                 transform.Translate(-_deltaMouseX * Time.deltaTime, 0, 0);
             _prevMouseX = Input.mousePosition.x;
         }
