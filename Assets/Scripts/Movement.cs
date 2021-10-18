@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float _speed = 5.0f;
     [SerializeField] private float _counter = 0f;
+    [SerializeField] private Image rightBar, leftBar;
     private bool _isMoving = true;
     private float _deltaMouseX = 0f;
     private float _prevMouseX = 0f;
@@ -14,9 +16,13 @@ public class Movement : MonoBehaviour
     {
         if (other.gameObject.tag == "Pink")
         {
-            _counter++;
+            leftBar.fillAmount += 0.1f;
+            rightBar.fillAmount -= 0.1f;
         }
-        else if (other.gameObject.tag == "Blue") _counter--;
+        else if (other.gameObject.tag == "Blue") { 
+            leftBar.fillAmount -= 0.1f;
+            rightBar.fillAmount += 0.1f;
+        }
     }
     void Update()
     {
