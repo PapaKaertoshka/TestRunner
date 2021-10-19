@@ -8,9 +8,11 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _speed = 5.0f;
     [SerializeField] private float _counter = 0f;
     [SerializeField] private Image rightBar, leftBar;
+    [SerializeField] private Animator anim;
     private bool _isMoving = true;
     private float _deltaMouseX = 0f;
     private float _prevMouseX = 0f;
+    //private bool finish = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,8 +23,16 @@ public class Movement : MonoBehaviour
         else if (other.gameObject.tag == "Blue") {
             _counter++;
         }
-        rightBar.fillAmount = _counter * 0.1f;
-        leftBar.fillAmount = -_counter * 0.1f;
+        else
+        {
+            if (other.gameObject.tag == "Finish") { 
+                anim.SetBool("Finish", true);
+                move = false;
+            }
+        }
+        rightBar.fillAmount = _counter * (1f / 6f);
+        leftBar.fillAmount = -_counter * (1f / 6f);
+
     }
     void Update()
     {
@@ -41,7 +51,11 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         if (_isMoving)
+        {
             transform.Translate(0, 0, _speed * Time.fixedDeltaTime);
+        }
+        
+            
     }
 
     public bool move
