@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _counter = 0f;
     [SerializeField] private Image rightBar, leftBar;
     [SerializeField] private Animator anim;
+    private float desiredPosX;
     private bool _isMoving = true;
     private float _deltaMouseX = 0f;
     private float _prevMouseX = 0f;
@@ -38,13 +39,18 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            desiredPosX = transform.position.x;
             _prevMouseX = Input.mousePosition.x;
         }
         else if (Input.GetMouseButton(0) && _isMoving)
         {
             _deltaMouseX = _prevMouseX - Input.mousePosition.x;
-            if ((transform.position.x > -4.8f || _deltaMouseX < 0) && (transform.position.x < 4.8f || _deltaMouseX > 0))
-                transform.Translate(-_deltaMouseX * Time.deltaTime, 0, 0);
+            if ((desiredPosX > -4f || _deltaMouseX < 0) && (desiredPosX < 4f || _deltaMouseX > 0))
+            {
+                desiredPosX -= _deltaMouseX * Time.deltaTime;
+            }
+            Vector3 smoothedPos = Vector3.Lerp(transform.position, new Vector3(desiredPosX, transform.position.y, transform.position.z), _speed * Time.deltaTime);
+            transform.position = smoothedPos;
             _prevMouseX = Input.mousePosition.x;
         }
     }
