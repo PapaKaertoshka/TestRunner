@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class GateBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] private GameObject gates;
+    private IEnumerator closeGates() {
+        yield return new WaitForSeconds(1f);
+        gates.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        StartCoroutine(closeGates());
     }
 }
