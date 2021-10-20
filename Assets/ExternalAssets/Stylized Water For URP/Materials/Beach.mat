@@ -8,10 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Beach
-  m_Shader: {fileID: -6465566751694194690, guid: b85c5e2c0d0c9774ab24e77078fc44cb,
-    type: 3}
-  m_ShaderKeywords: FOAM_SHADOWS_ON INTERSECTION_EFFECTS_ON SHORE_MOVEMENT_ON WATER_LIGHTING_ON
-    WORLD_SPACE_UV_ON
+  m_Shader: {fileID: -6465566751694194690, guid: b85c5e2c0d0c9774ab24e77078fc44cb, type: 3}
+  m_ShaderKeywords: FOAM_SHADOWS_ON INTERSECTION_EFFECTS_ON SHORE_MOVEMENT_ON SURFACE_FOAM_ON
+    WATER_LIGHTING_ON WORLD_SPACE_UV_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -69,6 +68,19 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - FOAM_SHADOWS: 1
     - INTERSECTION_EFFECTS: 1
@@ -90,14 +102,14 @@ Material:
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _FoamShadowDepth: 10
-    - _FoamShadowStrength: 0.45
+    - _FoamShadowStrength: 0.484
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _IntersectionFoamBlend: 1
-    - _IntersectionFoamDepth: 0.6
+    - _IntersectionFoamDepth: 2.2
     - _IntersectionFoamScale: 0.19
-    - _IntersectionFoamShadowProjection: 4.6
+    - _IntersectionFoamShadowProjection: 4.76
     - _IntersectionWaterBlend: 0
     - _LightingHardness: 1
     - _LightingSmoothness: 1
@@ -109,14 +121,14 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _RefractionStrength: 0.022
-    - _ShoreBlend: 1
-    - _ShoreDepth: 0
+    - _ShoreBlend: 0.75
+    - _ShoreDepth: 3
     - _ShoreFade: 1
-    - _ShoreFoamBreakupScale: 31.2
+    - _ShoreFoamBreakupScale: 3.12
     - _ShoreFoamBreakupStrength: 1.13
     - _ShoreFoamFrequency: 22.6
-    - _ShoreFoamSpeed: -2.5
-    - _ShoreFoamWidth: 0.6
+    - _ShoreFoamSpeed: 1
+    - _ShoreFoamWidth: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -127,7 +139,7 @@ Material:
     - _SurfaceFoamHeightMaskSmoothness: 0
     - _SurfaceFoamShadowProjection: 15
     - _UnderwaterRefractionStrength: 0.099
-    - _WaterColorDepth: 0.65
+    - _WaterColorDepth: 1.89
     - _WaterColorHorizonDistance: 20
     - _WorkflowMode: 1
     - _ZWrite: 1
@@ -144,17 +156,18 @@ Material:
     - _ShoreColor: {r: 1, g: 1, b: 1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SurfaceFoamColor1: {r: 1, g: 1, b: 1, a: 0.3215686}
-    - _SurfaceFoamColor2: {r: 1, g: 1, b: 1, a: 0.7294118}
-    - _SurfaceFoamMovement: {r: 0.7, g: 0, b: 0.47, a: 0.01}
-    - _SurfaceFoamSampling: {r: 0.62, g: 0, b: 0, a: 0}
-    - _SurfaceFoamTilingAndOffset: {r: -1, g: -1, b: 0.57, a: 0.22}
-    - _WaterColorDeep: {r: 0, g: 0.2600391, b: 0.6509434, a: 1}
-    - _WaterColorHorizon: {r: 0, g: 0.22740677, b: 0.8, a: 1}
-    - _WaterColorShallow: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
-    - _WaterColorUnderwater: {r: 0.20387965, g: 0.30975965, b: 0.517647, a: 0}
+    - _SurfaceFoamColor2: {r: 0.16862746, g: 0, b: 1, a: 0.7294118}
+    - _SurfaceFoamMovement: {r: 0.8, g: 0.05, b: 0.5, a: 0.01}
+    - _SurfaceFoamSampling: {r: 1, g: 1.31, b: 0, a: 0}
+    - _SurfaceFoamTilingAndOffset: {r: 0, g: -1, b: 1.6, a: 1}
+    - _WaterColorDeep: {r: 0.28773582, g: 0.6863794, b: 1, a: 1}
+    - _WaterColorHorizon: {r: 0.05882353, g: 0, b: 0.13333334, a: 1}
+    - _WaterColorShallow: {r: 1, g: 0, b: 0, a: 0.5019608}
+    - _WaterColorUnderwater: {r: 0.5254902, g: 0.6156863, b: 0.7921569, a: 0}
     - _WaveColor: {r: 0, g: 0, b: 0, a: 0}
     - _WaveDirections: {r: 0, g: 0.64, b: 1, a: 0.33}
-    - _WaveVisuals: {r: 0, g: 7.9, b: 1.38, a: 0}
+    - _WaveVisuals: {r: 0.143, g: 7.9, b: 1.38, a: 0}
+  m_BuildTextureStacks: []
 --- !u!114 &8979482052499565114
 MonoBehaviour:
   m_ObjectHideFlags: 11
