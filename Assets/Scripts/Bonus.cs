@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Bonus : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private float center;
     void Start()
     {
-        
+        center = transform.position.y;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
     }

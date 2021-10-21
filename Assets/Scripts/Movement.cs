@@ -17,6 +17,7 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.tag == "Pink")
         {
             _counter--;
@@ -24,7 +25,16 @@ public class Movement : MonoBehaviour
         else if (other.gameObject.tag == "Blue") {
             _counter++;
         }
-        else
+        else if (other.gameObject.tag == "RBonus")
+        {
+            _counter -= 0.5f;
+            other.gameObject.SetActive(false);
+        }
+        else if (other.gameObject.tag == "BBonus")
+        {
+            _counter += 0.5f;
+            other.gameObject.SetActive(false);
+        } else
         {
             if (other.gameObject.tag == "Finish") { 
                 anim.SetBool("Finish", true);
