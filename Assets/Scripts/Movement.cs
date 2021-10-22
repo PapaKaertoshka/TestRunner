@@ -67,11 +67,10 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         if (_isMoving)
-        {
-            transform.Translate(0, 0, _speed * Time.fixedDeltaTime);
-        }
-        
-            
+            {
+                transform.Translate(0, 0, _speed * Time.fixedDeltaTime);
+            }
+       
     }
 
     public bool move
